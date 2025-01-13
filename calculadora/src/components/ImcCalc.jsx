@@ -23,6 +23,12 @@ const ImcCalc = ({calcImc}) => {
         return regex.test(text) ? text : "";
     };
 
+        // Função para validar os dígitos
+        const validDigitsWeight = (text) => {
+            const regex = /^\d*(,\d*)?$/;
+            return regex.test(text) ? text : "";
+        };
+
     // Função para lidar com a mudança na altura
     const handleHeightChange = (e) => {
         const updateValue = validDigits(e.target.value);
@@ -32,7 +38,7 @@ const ImcCalc = ({calcImc}) => {
 
     
     const handleWeightChange=(e)=>{
-            const updateValue=validDigits(e.target.value)
+            const updateValue=validDigitsWeight(e.target.value)
             setWeight(updateValue)
     }
 
@@ -60,7 +66,7 @@ const ImcCalc = ({calcImc}) => {
             </div>
             <div className="action-control">
                <Button id="calc-btn"
-               text="Calcular" action={calcImc}/>
+               text="Calcular" action={(e)=> calcImc(e,height,weight)}/>
                <Button id="clear-btn"
                text="Limpar" action={clearForm}/>
             </div>
