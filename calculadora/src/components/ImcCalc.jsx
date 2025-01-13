@@ -3,9 +3,13 @@ import "./ImcCalc.css"
 
 import { useState } from "react"
 
-const ImcCalc = () => {
+const ImcCalc = ({calcImc}) => {
     const[height,setHeight]=useState("")
     const[weight,setWeight]=useState("")
+
+
+  
+
 
     const clearForm =(e)=>{
         e.preventDefault();
@@ -56,7 +60,7 @@ const ImcCalc = () => {
             </div>
             <div className="action-control">
                <Button id="calc-btn"
-               text="Calcular"/>
+               text="Calcular" action={calcImc}/>
                <Button id="clear-btn"
                text="Limpar" action={clearForm}/>
             </div>
